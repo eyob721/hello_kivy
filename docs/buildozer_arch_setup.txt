@@ -1,0 +1,68 @@
+# Steps:
+#   1. Update system [Optional]
+#   2. Install dependencies
+#   3. Setup pip in arch
+#   4. Install pip packages
+#   5. Install buildozer from the repo
+
+# NOTE: Using python 3.8.x version is recommended, although it did worked on 3.10.12 as well
+#       Using jdk17 is recommended, it wasn't working with jdk21
+
+# 1. Update system [Optional]
+sudo pacman -Syu
+
+# 2. Install dependencies
+sudo pacman -S --noconfirm\
+    curl\
+    base-devel\
+    python\
+    python-distutils-extra\
+    python-pip\
+    ffmpeg\
+    sdl2\
+    sdl2_image\
+    sdl2_mixer\
+    sdl2_ttf\
+    portmidi\
+    zlib
+
+# this requeires the multilib repo to be enabled
+sudo pacman -S --noconfirm\
+    autoconf\
+    base-devel\
+    ccahe\
+    cmake
+    git\
+    gtk2\
+    lib32-gtk2\
+    jdk17-openjdk\
+    jre17-openjdk\
+    lib32-libidn11\
+    lib32-libltdl\
+    lib32-ncurses\
+    lib32-pango\
+    lib32-zlib\
+    libffi\
+    libstdc++5\
+    ncurses\
+    openssl\
+    unzip\
+    zlib\
+
+# 3. Setup pip in arch
+# Enable pip in arch
+mv /usr/lib/python3.11/EXTERNALLY-MANAGED /usr/lib/python3.11/EXTERNALLY-MANAGED.old
+
+# 4. Install pip packages
+# Install kivy and Cython
+pip3 install --user --upgrade Cython==0.29.33 virtualenv
+pip3 install --user --upgrade kivy
+
+# Add ~/.local/bin to PATH, add this line to .bashrc or .zshrc
+export PATH="$PATH:~/.local/bin"
+
+# 5. Install buildozer from the repo
+mkdir ~/.gits && cd ~/.gits || exit 1
+git clone https://github.com/kivy/buildozer.git
+cd buildozer/ || exit 1
+sudo python3 setup.py install

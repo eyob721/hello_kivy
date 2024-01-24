@@ -1,0 +1,50 @@
+# Update the system
+sudo apt-get update && sudo apt update && sudo apt upgrade
+
+# Install build-essential packages
+sudo apt install build-essential
+sudo apt install build-essential dkms
+sudo apt install build-essential dkms linux-headers-$(uname -r)
+
+# Install vim for an editor
+sudo apt-get install vim-gtk3
+
+# Install dependencies
+sudo apt-get install -y \
+	python3\
+    python3-pip\
+    ipython3\
+    git\
+    zip\
+    unzip\
+    openjdk-17-jdk\
+    python3-pip\
+    autoconf\
+    libtool\
+    pkg-config\
+    zlib1g-dev\
+    libncurses5-dev\
+    libncursesw5-dev\
+    libtinfo5\
+    cmake\
+    libffi-dev\
+    libssl-dev
+
+# Install kivy and Cython
+pip3 install --user --upgrade Cython==0.29.33 virtualenv
+pip3 install --user --upgrade kivy
+
+# Add ~/.local/bin to PATH, add this line to .bashrc or .zshrc
+export PATH="$PATH:~/.local/bin"
+
+# Install buildozer from the repo
+mkdir ~/gits && cd ~/gits
+git clone https://github.com/kivy/buildozer.git
+cd buildozer/
+sudo python3 setup.py install
+
+# Go to the app directory start the process
+cd ~/AlxGuest/Workspace/practice/android/kivy/simple_app/
+buildozer init
+# Edit the buildozer.spec file and start the compilation process
+buildozer -v android debug
