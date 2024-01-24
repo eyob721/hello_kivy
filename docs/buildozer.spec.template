@@ -1,10 +1,10 @@
 [app]
 
 # (str) Title of your application
-title = Hello World 2
+title = Hello World
 
 # (str) Package name
-package.name = hello_world_2
+package.name = hello_world
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.papi721
@@ -37,8 +37,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-# NOTE: Make sure to specify the python version you are using, for both python3
-# and hostpython3.
+# NOTE: Make sure to specify the python version you are using, for both python3 and hostpython3.
 # WARN: Don't remove pillow and hostpython3 they are a must.
 requirements = python3==3.8.18,hostpython3==3.8.18,kivy,pillow
 
@@ -71,8 +70,8 @@ orientation = portrait
 osx.python_version = 3.8.18
 
 # Kivy version to use
-# NOTE: Make sure to specify the kvy version you are using here
-# WARN: Make sure to require the same kivy version from your python script
+# NOTE: Make sure to specify the kivy version you are using here
+# WARN: Make sure to require the same kivy version from your main.py
 osx.kivy_version = 2.3.0
 
 #
